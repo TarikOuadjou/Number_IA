@@ -7,6 +7,6 @@ mnist = tf.keras.datasets.mnist
 train_images = train_images.reshape((train_images.shape[0], 28 * 28))
 df = pd.DataFrame(train_images)
 df.insert(0, 'label', train_labels)
-df.to_csv('mnist_train_test.csv', index=False, header=False)
+df.to_csv('mnist_train.csv', index=False, header=False)
 
 print("Fichier 'mnist_train.csv' créé avec succès!")

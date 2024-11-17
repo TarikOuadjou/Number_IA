@@ -23,21 +23,14 @@ void calcule_gris(int array_large[560][560], double array_mini[28][28])
 }
 
 const std::vector<double>& calcule_vecteur(double array_mini[28][28]) {
-    // Déclaration d'un vecteur statique pour garantir qu'il persiste entre les appels
     static std::vector<double> result;
-
-    // Vider le vecteur avant de le remplir à nouveau (important si la fonction est appelée plusieurs fois)
     result.clear();
-
-    // Remplir le vecteur avec les éléments du tableau
     for (int i = 0; i < 28; ++i) {
         for (int j = 0; j < 28; ++j) {
             result.push_back(static_cast<double>(array_mini[j][i]));
         }
     }
-
-    // Retourner une référence constante vers le vecteur
-    return result;  // C'est ici que nous retournons une référence vers le vecteur statique `result`
+    return result;  
 }
 
 void print_array(double array[28][28]) {
@@ -95,42 +88,34 @@ std::vector<MNISTData> readMNISTCSV(const std::string& filePath) {
 
     std::string line;
 
-    // Lire ligne par ligne
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         std::string value;
         MNISTData data;
 
-        // Lire le label (première colonne)
         std::getline(ss, value, ',');
         data.label = std::stoi(value);
 
-        // Lire les pixels (784 colonnes suivantes)
         while (std::getline(ss, value, ',')) {
             int pixel = std::stoi(value);
-            // Normaliser le pixel dans la plage [0, 1]
+            // Normalisation du pixel 
             data.pixels.push_back(static_cast<float>(pixel) / 255.0f);
         }
 
-        // Ajouter les données au dataset
         dataset.push_back(data);
     }
-
     file.close();
-    std::cout << "Lecture et normalisation terminées !" << std::endl;
     return dataset;
 }
 
 Screen::Screen()
 {
-    // Initialisation de SDL
     if (SDL_Init(SDL_INIT_VIDEO) != 0) 
     {
         std::cerr << "Erreur SDL_Init: " << SDL_GetError() << std::endl;
         exit(1);
     }
 
-    // Création de la fenêtre et du renderer
     if (SDL_CreateWindowAndRenderer(840, 560, 0, &window, &renderer) != 0) 
     {
         std::cerr << "Erreur SDL_CreateWindowAndRenderer: " << SDL_GetError() << std::endl;
@@ -162,14 +147,12 @@ Screen::Screen()
 
 Screen::Screen(double data[28][28])
 {
-    // Initialisation de SDL
     if (SDL_Init(SDL_INIT_VIDEO) != 0) 
     {
         std::cerr << "Erreur SDL_Init: " << SDL_GetError() << std::endl;
         exit(1);
     }
 
-    // Création de la fenêtre et du renderer
     if (SDL_CreateWindowAndRenderer(720, 480, 0, &window, &renderer) != 0) 
     {
         std::cerr << "Erreur SDL_CreateWindowAndRenderer: " << SDL_GetError() << std::endl;
@@ -324,7 +307,6 @@ void Screen::input()
                 if (e.key.keysym.sym == SDLK_c) 
                 {
                     calcule_gris(array_large,array);
-                    print_array(array);
                     const std::vector<double>& input = calcule_vecteur(array);
                     int k = 5;
                     int predictedLabel = predictLabel(dataset, input, k);
