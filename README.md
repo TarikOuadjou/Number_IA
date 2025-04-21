@@ -1,7 +1,6 @@
-
 # Number_IA
 
-**Number_IA** est un projet de reconnaissance de chiffres manuscrits, développé dans le but de reconnaître des chiffres dessinés à la main via une interface graphique. Actuellement, le projet utilise l'algorithme des k plus proches voisins (KNN) pour effectuer la reconnaissance d'image, mais il est prévu de le remplacer par un réseau de neurones, qui est en cours d'implémentation.
+**Number_IA** est un projet de reconnaissance de chiffres manuscrits, développé dans le but de reconnaître des chiffres dessinés à la main via une interface graphique. Actuellement, le projet utilise l'algorithme des k plus proches voisins (KNN) ainsi que de mon propre réseau de neuronne pour effectuer la reconnaissance d'image.
 
 ## Prérequis
 
@@ -13,6 +12,7 @@ Avant de pouvoir exécuter le programme, assurez-vous d'avoir les éléments sui
   - `numpy`
 
 Vous pouvez installer ces bibliothèques via `pip` si elles ne sont pas encore installées :
+
 ```bash
 pip install pandas tensorflow numpy
 ```
@@ -28,6 +28,7 @@ Le fichier `mnist_train.csv` est nécessaire pour l'entraînement de l'algorithm
 
 Une fois obtenu, le fichier `mnist_train.csv` doit être placé directement dans le dossier principal.
 A terme le ficiher `data_modif.ipynb` réalisera un traitement sur le dataset, pour l'instant ce n'est pas finalisé.
+
 ### 2. Compilation du projet
 
 Le projet utilise un **Makefile** pour simplifier la compilation du code source. Pour compiler le programme, exécutez la commande suivante dans le terminal :
@@ -53,5 +54,6 @@ Le programme ouvrira une interface graphique vous permettant de dessiner des chi
 ### Interaction avec l'interface graphique
 
 - **Dessiner un chiffre** : Maintenez le clic gauche de la souris pour dessiner le chiffre.
-- **Reconnaître le chiffre** : Après avoir dessiné un chiffre, appuyez sur la touche **"c"** pour que l'algorithme tente de reconnaître l'image.
+- **Reconnaître le chiffre - KNN** : Après avoir dessiné un chiffre, appuyez sur la touche **"k"** pour que l'algorithme tente de reconnaître l'image à l'aide de l'algorithme des k - plus proches voisins
+- **Reconnaître le chiffre - Neural Network** : Après avoir dessiné un chiffre, appuyez sur la touche **"n"** pour que l'algorithme tente de reconnaître l'image à l'aide d'un réseau de neuronne.
 - **Réinitialiser la feuille de dessin** : Appuyez sur la touche **"e"** pour effacer la feuille et recommencer.

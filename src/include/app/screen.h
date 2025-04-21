@@ -1,44 +1,42 @@
 /* Include files*/
 #include <SDL2/SDL.h>
 #include <core/knn.h>
+#include <core/neural.h>
 #include <vector>
 #include <cmath>
 #include <iostream>
 
+class Screen
+{
+public:
+    Screen(Neural network);
 
-class Screen 
-{   
-    public :
+    void show_mini();
 
-        Screen();
+    void show_large();
 
-        Screen(double data[28][28]);
-        
-        void show_mini();
+    void input();
 
-        void show_large();
+    void efface();
 
-        void input();
+    ~Screen();
 
-        void efface();
+    void draw_point_souris_mini();
 
-        ~Screen();
+    void draw_point_souris_large();
 
-        void draw_point_souris_mini();
+    int flag_taille;
 
-        void draw_point_souris_large();
-
-        int flag_taille;
-
-    private :
-        SDL_Event e;    
-        SDL_Window* window;
-        SDL_Renderer* renderer;
-        int mouse_x;
-        int mouse_y;
-        int flag_appuyer; 
-        double array[28][28];
-        int array_large[560][560];
-        int radius_peinture;
-        std::vector<MNISTData> dataset;
+private:
+    SDL_Event e;
+    SDL_Window *window;
+    SDL_Renderer *renderer;
+    int mouse_x;
+    int mouse_y;
+    int flag_appuyer;
+    double array[28][28];
+    int array_large[560][560];
+    int radius_peinture;
+    std::vector<MNISTData> dataset;
+    Neural network;
 };

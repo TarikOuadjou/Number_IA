@@ -61,6 +61,19 @@
         "fstream": "cpp",
         "algorithm": "cpp",
         "map": "cpp",
-        "xtree": "cpp"
-    }
+        "xtree": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "unordered_map": "cpp",
+        "string_view": "cpp",
+        "*.tcc": "cpp",
+        "cstdarg": "cpp",
+        "cwctype": "cpp",
+        "functional": "cpp",
+        "memory_resource": "cpp",
+        "random": "cpp",
+        "numbers": "cpp",
+        "cinttypes": "cpp"
+    },
+    "CodeGPT.apiKey": "CodeGPT Plus Beta"
 }
